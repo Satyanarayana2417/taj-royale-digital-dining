@@ -7,14 +7,43 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const Hero = () => {
   const isMobile = useIsMobile();
   
-  // List of background images to cycle through
+  // List of background images to cycle through with higher quality and proper loading
   const backgroundImages = [
-    'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2940&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2940&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=1920&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop',
+    'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1920&auto=format&fit=crop',
   ];
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
+  
+  // Preload images
+  useEffect(() => {
+    const loadImages = async () => {
+      const loadPromises = backgroundImages.map((src, index) => {
+        return new Promise<void>((resolve) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = () => {
+            setImagesLoaded(prev => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+            resolve();
+          };
+          img.onerror = () => {
+            console.error(`Failed to load image: ${src}`);
+            resolve();
+          };
+        });
+      });
+      
+      await Promise.all(loadPromises);
+    };
+    
+    loadImages();
+  }, [backgroundImages]);
   
   // Change background image every 5 seconds
   useEffect(() => {

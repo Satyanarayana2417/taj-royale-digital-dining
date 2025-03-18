@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useIsVisible } from "@/hooks/useIsVisible";
@@ -18,7 +17,7 @@ const Reservation = () => {
       <section className="relative h-[40vh] md:h-[50vh]">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2940&auto=format&fit=crop")' }}
+          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop")' }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
@@ -29,7 +28,7 @@ const Reservation = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6"
           >
-            Reservations
+            Book a Table
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -37,7 +36,7 @@ const Reservation = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-white/90 text-lg md:text-xl max-w-2xl"
           >
-            Book your table and experience fine dining at Taj Royale
+            Reserve your dining experience at Taj Royale
           </motion.p>
         </div>
       </section>

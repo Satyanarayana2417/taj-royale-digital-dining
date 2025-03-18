@@ -56,7 +56,7 @@ const Navbar = () => {
             { path: '/', label: 'Home' },
             { path: '/about', label: 'About Us' },
             { path: '/menu', label: 'Menu' },
-            { path: '/reservation', label: 'Reservations' },
+            { path: '/reservation', label: 'Book a Table' },
             { path: '/gallery', label: 'Gallery' },
             { path: '/contact', label: 'Contact' },
           ].map((link) => (
@@ -100,7 +100,7 @@ const Navbar = () => {
               { path: '/', label: 'Home' },
               { path: '/about', label: 'About Us' },
               { path: '/menu', label: 'Menu' },
-              { path: '/reservation', label: 'Reservations' },
+              { path: '/reservation', label: 'Book a Table' },
               { path: '/gallery', label: 'Gallery' },
               { path: '/contact', label: 'Contact' },
             ].map((link) => (

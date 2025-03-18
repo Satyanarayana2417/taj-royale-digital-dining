@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Calendar as CalendarIcon, Clock, Users } from 'lucide-react';
 import { format } from 'date-fns';
@@ -33,7 +32,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import Button from './Button';
+import Button from '@/components/ui/Button';
 
 const reservationSchema = z.object({
   name: z.string().min(2, {
