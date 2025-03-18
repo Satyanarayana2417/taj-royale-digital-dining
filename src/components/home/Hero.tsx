@@ -2,8 +2,11 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
+  const isMobile = useIsMobile();
+  
   // List of background images to cycle through
   const backgroundImages = [
     'https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2940&auto=format&fit=crop',
@@ -46,14 +49,14 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block mb-3 bg-gold text-white text-sm uppercase px-3 py-1">Fine Dining Restaurant</span>
+          <span className="inline-block mb-3 bg-gold/90 text-white text-xs sm:text-sm uppercase px-3 py-1 rounded-sm tracking-wider font-medium">Fine Dining Experience</span>
         </motion.div>
         
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 max-w-4xl"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 max-w-4xl leading-tight"
         >
           Welcome to Taj Royale – A Culinary Experience Beyond Borders
         </motion.h1>
@@ -62,7 +65,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl"
+          className="text-white/90 text-base sm:text-lg md:text-xl mb-8 max-w-2xl"
         >
           Indulge in an exquisite dining experience with authentic flavors, elegant ambiance, and impeccable service.
         </motion.p>
@@ -74,7 +77,7 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4"
         >
           <Button to="/reservation" size="lg">
-            Reserve a Table
+            Book a Table
           </Button>
           <Button to="/menu" size="lg" variant="outline">
             Explore Menu
