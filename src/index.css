@@ -17,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 267 30% 54%; /* Changed from gold (35 74% 55%) to deep purple */
+    --primary: 35 74% 55%; /* Reverted to gold (D4AF37) */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -26,7 +26,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 267 30% 54%; /* Changed from gold to deep purple */
+    --accent: 35 74% 55%; /* Reverted to gold */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,7 +34,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 267 30% 54%; /* Changed from gold to deep purple */
+    --ring: 35 74% 55%; /* Reverted to gold */
 
     --radius: 0.5rem;
   }
