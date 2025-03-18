@@ -19,14 +19,14 @@ const testimonials: Testimonial[] = [
     name: 'Raj Sharma',
     position: 'Food Critic',
     rating: 5,
-    comment: 'The butter chicken at Taj Royale is the best I've had in the city. The spices are perfectly balanced, and the service is impeccable. A must-visit for anyone looking for authentic Indian cuisine.',
+    comment: "The butter chicken at Taj Royale is the best I've had in the city. The spices are perfectly balanced, and the service is impeccable. A must-visit for anyone looking for authentic Indian cuisine.",
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2787&auto=format&fit=crop',
   },
   {
     id: 2,
     name: 'Priya Patel',
     rating: 5,
-    comment: 'The ambiance is simply stunning! Every dish we ordered was a masterpiece, both in presentation and taste. The staff was attentive without being intrusive. Will definitely return for special occasions.',
+    comment: "The ambiance is simply stunning! Every dish we ordered was a masterpiece, both in presentation and taste. The staff was attentive without being intrusive. Will definitely return for special occasions.",
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2787&auto=format&fit=crop',
   },
   {
@@ -34,14 +34,14 @@ const testimonials: Testimonial[] = [
     name: 'Michael Chen',
     position: 'Travel Blogger',
     rating: 4,
-    comment: 'As someone who travels the world trying different cuisines, I can confidently say that Taj Royale offers an authentic experience that stands out. The lamb biryani was exceptional!',
+    comment: "As someone who travels the world trying different cuisines, I can confidently say that Taj Royale offers an authentic experience that stands out. The lamb biryani was exceptional!",
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2787&auto=format&fit=crop',
   },
   {
     id: 4,
     name: 'Anita Desai',
     rating: 5,
-    comment: 'We celebrated our anniversary at Taj Royale and it was perfect from start to finish. The customized dessert was a lovely touch. Thank you for making our evening so special!',
+    comment: "We celebrated our anniversary at Taj Royale and it was perfect from start to finish. The customized dessert was a lovely touch. Thank you for making our evening so special!",
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2940&auto=format&fit=crop',
   },
 ];
