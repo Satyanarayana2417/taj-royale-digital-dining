@@ -17,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 35 74% 55%;
+    --primary: 267 30% 54%; /* Changed from gold (35 74% 55%) to deep purple */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -26,7 +26,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 35 74% 55%;
+    --accent: 267 30% 54%; /* Changed from gold to deep purple */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,7 +34,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 35 74% 55%;
+    --ring: 267 30% 54%; /* Changed from gold to deep purple */
 
     --radius: 0.5rem;
   }
@@ -57,26 +57,14 @@
 }
 
 @layer components {
-  .taj-container {
-    @apply container mx-auto px-4 md:px-6 py-8 md:py-16;
-  }
-
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-8 relative;
-  }
-
+  /* ... keep existing code (container, section-title classes) */
+  
   .section-title::after {
     content: '';
     @apply absolute h-[3px] w-20 bg-gold left-0 -bottom-2;
   }
 
-  .section-title.centered {
-    @apply text-center;
-  }
-
-  .section-title.centered::after {
-    @apply left-1/2 transform -translate-x-1/2;
-  }
+  /* ... keep existing code (section-title.centered, etc) */
 
   .nav-link {
     @apply relative px-2 py-1 text-neutral-800 transition-all duration-300 hover:text-gold;
@@ -98,28 +86,5 @@
     @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light text-transparent bg-clip-text;
   }
 
-  .image-overlay {
-    @apply relative overflow-hidden;
-  }
-
-  .image-overlay img {
-    @apply transition-transform duration-700 ease-out;
-  }
-
-  .image-overlay:hover img {
-    @apply scale-110;
-  }
-
-  .image-overlay::after {
-    content: '';
-    @apply absolute inset-0 bg-black bg-opacity-30 opacity-0 transition-opacity duration-500;
-  }
-
-  .image-overlay:hover::after {
-    @apply opacity-100;
-  }
-
-  .glass-effect {
-    @apply backdrop-blur-md bg-white bg-opacity-10 border border-white border-opacity-20;
-  }
+  /* ... keep existing code (image-overlay, glass-effect classes) */
 }

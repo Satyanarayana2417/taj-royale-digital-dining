@@ -3,38 +3,30 @@ import { Calendar as CalendarIcon, Clock, Users } from 'lucide-react';
 import { format } from 'date-fns';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { toast } from 'sonner';
-
+import * as z from 'zod';
 import { cn } from '@/lib/utils';
-import { Button as ShadcnButton } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Button as ShadcnButton } from '@/components/ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import Button from '@/components/ui/Button';
 
-const reservationSchema = z.object({
+const bookingSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
   }),
@@ -42,48 +34,41 @@ const reservationSchema = z.object({
     message: 'Please enter a valid email address.',
   }),
   phone: z.string().min(10, {
-    message: 'Please enter a valid phone number.',
+    message: 'Phone number must be at least 10 digits.',
   }),
   date: z.date({
-    required_error: 'Please select a date.',
+    required_error: 'A date is required.',
   }),
   time: z.string({
     required_error: 'Please select a time.',
   }),
   guests: z.string({
-    required_error: 'Please select number of guests.',
+    required_error: 'Please select the number of guests.',
   }),
-  occasion: z.string().optional(),
-  specialRequests: z.string().optional(),
+  message: z.string().optional(),
 });
 
-type ReservationValues = z.infer<typeof reservationSchema>;
+type BookingValues = z.infer<typeof bookingSchema>;
 
 const ReservationForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(new Date());
   
-  const form = useForm<ReservationValues>({
-    resolver: zodResolver(reservationSchema),
+  const form = useForm<BookingValues>({
+    resolver: zodResolver(bookingSchema),
     defaultValues: {
       name: '',
       email: '',
       phone: '',
-      occasion: '',
-      specialRequests: '',
+      date: new Date(),
+      time: '',
+      guests: '',
+      message: '',
     },
   });
   
-  function onSubmit(data: ReservationValues) {
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Reservation data:', data);
-      toast.success('Reservation submitted successfully! We\'ll contact you shortly to confirm your booking.');
-      form.reset();
-      setIsSubmitting(false);
-    }, 1500);
-  }
+  const onSubmit = (values: BookingValues) => {
+    console.log(values);
+  };
   
   return (
     <Form {...form}>
@@ -94,15 +79,14 @@ const ReservationForm = () => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your name" {...field} />
+                  <Input placeholder="Your Name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="email"
@@ -110,13 +94,14 @@ const ReservationForm = () => {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your email" type="email" {...field} />
+                  <Input placeholder="Your Email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="phone"
@@ -124,13 +109,12 @@ const ReservationForm = () => {
               <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your phone number" {...field} />
+                  <Input placeholder="Your Phone Number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="guests"
@@ -144,19 +128,22 @@ const ReservationForm = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                      <SelectItem key={num} value={num.toString()}>
-                        {num} {num === 1 ? 'Person' : 'People'}
-                      </SelectItem>
-                    ))}
-                    <SelectItem value="9+">9+ People (Large Group)</SelectItem>
+                    <SelectGroup>
+                      <SelectLabel>Guests</SelectLabel>
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                        <SelectItem key={num} value={num.toString()}>
+                          {num} {num > 1 ? 'Guests' : 'Guest'}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
                   </SelectContent>
                 </Select>
                 <FormMessage />
               </FormItem>
             )}
           />
-          
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="date"
@@ -167,18 +154,18 @@ const ReservationForm = () => {
                   <PopoverTrigger asChild>
                     <FormControl>
                       <ShadcnButton
-                        variant="outline"
+                        variant={'outline'}
                         className={cn(
-                          "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
+                          'justify-start text-left font-normal',
+                          !field.value && 'text-muted-foreground'
                         )}
                       >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
                         {field.value ? (
-                          format(field.value, "PPP")
+                          format(field.value, 'PPP')
                         ) : (
-                          <span>Select a date</span>
+                          <span>Pick a date</span>
                         )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </ShadcnButton>
                     </FormControl>
                   </PopoverTrigger>
@@ -186,10 +173,14 @@ const ReservationForm = () => {
                     <Calendar
                       mode="single"
                       selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) => date < new Date()}
+                      onSelect={setDate}
+                      onDayClick={(day) => {
+                        field.onChange(day);
+                      }}
+                      disabled={(date) =>
+                        date < new Date()
+                      }
                       initialFocus
-                      className="p-3 pointer-events-auto"
                     />
                   </PopoverContent>
                 </Popover>
@@ -197,7 +188,6 @@ const ReservationForm = () => {
               </FormItem>
             )}
           />
-          
           <FormField
             control={form.control}
             name="time"
@@ -207,45 +197,38 @@ const ReservationForm = () => {
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select time" />
+                      <SelectValue placeholder="Select a time" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {[
-                      '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
-                      '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM',
-                      '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM',
-                      '9:00 PM', '9:30 PM'
-                    ].map((time) => (
-                      <SelectItem key={time} value={time}>
-                        {time}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="occasion"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Occasion (Optional)</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select an occasion" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="birthday">Birthday</SelectItem>
-                    <SelectItem value="anniversary">Anniversary</SelectItem>
-                    <SelectItem value="date">Date Night</SelectItem>
-                    <SelectItem value="business">Business Meal</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectGroup>
+                      <SelectLabel>Time</SelectLabel>
+                      {[
+                        '12:00 PM',
+                        '12:30 PM',
+                        '1:00 PM',
+                        '1:30 PM',
+                        '2:00 PM',
+                        '2:30 PM',
+                        '3:00 PM',
+                        '3:30 PM',
+                        '4:00 PM',
+                        '4:30 PM',
+                        '5:00 PM',
+                        '5:30 PM',
+                        '6:00 PM',
+                        '6:30 PM',
+                        '7:00 PM',
+                        '7:30 PM',
+                        '8:00 PM',
+                        '8:30 PM',
+                        '9:00 PM',
+                      ].map((time) => (
+                        <SelectItem key={time} value={time}>
+                          {time}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -253,17 +236,16 @@ const ReservationForm = () => {
             )}
           />
         </div>
-        
         <FormField
           control={form.control}
-          name="specialRequests"
+          name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Special Requests (Optional)</FormLabel>
+              <FormLabel>Message</FormLabel>
               <FormControl>
-                <Textarea 
-                  placeholder="Any dietary restrictions, allergies, or special requests?"
-                  className="min-h-[120px]"
+                <Textarea
+                  placeholder="Enter your message here."
+                  className="resize-none"
                   {...field}
                 />
               </FormControl>
@@ -271,9 +253,8 @@ const ReservationForm = () => {
             </FormItem>
           )}
         />
-        
-        <Button type="submit" size="lg" className="w-full md:w-auto" disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Book Table'}
+        <Button type="submit" size="lg">
+          Book Now
         </Button>
       </form>
     </Form>
