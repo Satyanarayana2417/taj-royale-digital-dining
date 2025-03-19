@@ -61,7 +61,7 @@ const About = () => {
               Taj Royale began in 2005 with a simple vision: to create a dining experience that celebrates the rich culinary heritage of India while embracing modern sophistication and innovation.
             </p>
             <p className="text-neutral-600 mt-4">
-              Founded by Vikram Patel, a third-generation restaurateur with a passion for authentic flavors, Taj Royale quickly established itself as a premier destination for fine Indian dining in Mumbai.
+              Founded by Satyanarayana, a third-generation restaurateur with a passion for authentic flavors, Taj Royale quickly established itself as a premier destination for fine Indian dining in Mumbai.
             </p>
             <p className="text-neutral-600 mt-4">
               What started as a small family restaurant has evolved into an acclaimed culinary institution, known for its exceptional service, elegant ambiance, and masterfully crafted dishes that pay homage to India's diverse regional cuisines.
@@ -175,10 +175,10 @@ const About = () => {
                 image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2922&auto=format&fit=crop"
               },
               {
-                name: "Vikram Patel",
+                name: "Satyanarayana",
                 position: "Founder",
                 bio: "Vikram's vision and passion for Indian cuisine led to the creation of Taj Royale. His commitment to quality and authenticity continues to guide our culinary journey.",
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2787&auto=format&fit=crop"
+                image: "https://i.ibb.co/4RDF0dhg/IMG-20250319-115209.webp"
               }
             ].map((member, index) => (
               <motion.div
