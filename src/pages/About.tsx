@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useIsVisible } from "@/hooks/useIsVisible";
@@ -177,7 +176,7 @@ const About = () => {
               {
                 name: "Satyanarayana",
                 position: "Founder",
-                bio: "Vikram's vision and passion for Indian cuisine led to the creation of Taj Royale. His commitment to quality and authenticity continues to guide our culinary journey.",
+                bio: "satya's vision and passion for Indian cuisine led to the creation of Taj Royale. His commitment to quality and authenticity continues to guide our culinary journey.",
                 image: "https://i.ibb.co/4RDF0dhg/IMG-20250319-115209.webp"
               }
             ].map((member, index) => (
