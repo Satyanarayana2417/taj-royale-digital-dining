@@ -32,14 +32,14 @@ const Navbar = () => {
     <header 
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrollPosition > 50 ? 'bg-white shadow-md py-2' : 'py-4 bg-transparent'
+        scrollPosition > 50 ? 'bg-white shadow-md py-2' : 'py-3 md:py-4 bg-transparent'
       )}
     >
       <div className="taj-container flex justify-between items-center">
         {/* Logo */}
         <Link 
           to="/" 
-          className="text-2xl font-serif font-bold"
+          className="text-xl sm:text-2xl font-serif font-bold"
           onClick={closeMobileMenu}
         >
           <span className={cn(
@@ -51,7 +51,7 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 lg:space-x-8">
+        <nav className="hidden md:flex space-x-3 lg:space-x-6 xl:space-x-8">
           {[
             { path: '/', label: 'Home' },
             { path: '/about', label: 'About Us' },
@@ -64,7 +64,7 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={cn(
-                'nav-link',
+                'nav-link text-sm lg:text-base',
                 isActive(link.path) && 'active',
                 scrollPosition > 50 ? 'text-neutral-800' : 'text-white'
               )}

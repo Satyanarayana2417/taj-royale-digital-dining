@@ -72,20 +72,20 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-3 sm:px-6 md:px-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block mb-3 bg-gold/90 text-white text-xs sm:text-sm uppercase px-3 py-1 rounded-sm tracking-wider font-medium">Fine Dining Experience</span>
+          <span className="inline-block mb-2 sm:mb-3 bg-gold/90 text-white text-xs sm:text-sm uppercase px-3 py-1 rounded-sm tracking-wider font-medium">Fine Dining Experience</span>
         </motion.div>
         
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 max-w-4xl leading-tight"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif text-white mb-4 sm:mb-6 max-w-4xl leading-tight"
         >
           Welcome to Taj Royale – A Culinary Experience Beyond Borders
         </motion.h1>
@@ -94,7 +94,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-white/90 text-base sm:text-lg md:text-xl mb-8 max-w-2xl"
+          className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 max-w-2xl"
         >
           Indulge in an exquisite dining experience with authentic flavors, elegant ambiance, and impeccable service.
         </motion.p>
@@ -103,7 +103,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4"
         >
           <Button to="/reservation" size="lg">
             Book a Table
@@ -119,13 +119,13 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
-        <span className="text-white/80 text-sm mb-2">Scroll Down</span>
+        <span className="text-white/80 text-xs sm:text-sm mb-2">Scroll Down</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-white/50"
+          className="w-px h-6 sm:h-8 bg-white/50"
         ></motion.div>
       </motion.div>
     </div>

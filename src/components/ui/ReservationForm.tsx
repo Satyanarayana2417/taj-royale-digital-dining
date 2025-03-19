@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Calendar as CalendarIcon, Clock, Users } from 'lucide-react';
 import { format } from 'date-fns';
@@ -73,7 +74,7 @@ const ReservationForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           <FormField
             control={form.control}
             name="name"
@@ -101,7 +102,7 @@ const ReservationForm = () => {
             )}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           <FormField
             control={form.control}
             name="phone"
@@ -143,7 +144,7 @@ const ReservationForm = () => {
             )}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           <FormField
             control={form.control}
             name="date"

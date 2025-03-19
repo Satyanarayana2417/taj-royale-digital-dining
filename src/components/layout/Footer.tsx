@@ -4,18 +4,18 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 text-white py-16">
+    <footer className="bg-neutral-900 text-white py-12 sm:py-16">
       <div className="taj-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Logo & About */}
-          <div>
-            <Link to="/" className="text-3xl font-serif font-bold">
+          <div className="mb-2 sm:mb-0">
+            <Link to="/" className="text-2xl sm:text-3xl font-serif font-bold">
               Taj<span className="text-gold">Royale</span>
             </Link>
-            <p className="mt-4 text-neutral-300">
+            <p className="mt-3 sm:mt-4 text-neutral-300 text-sm sm:text-base">
               Experience the finest culinary journey with authentic flavors and exquisite ambiance at Taj Royale.
             </p>
-            <div className="mt-6 flex space-x-4">
+            <div className="mt-4 sm:mt-6 flex space-x-4">
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-neutral-300 hover:text-gold transition-colors duration-300">
                 <Instagram className="h-5 w-5" />
               </a>
@@ -30,7 +30,7 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Quick Links</h3>
+            <h3 className="text-lg sm:text-xl font-serif mb-3 sm:mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {[
                 { path: '/', label: 'Home' },
@@ -43,7 +43,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link 
                     to={link.path}
-                    className="text-neutral-300 hover:text-gold transition-colors duration-300"
+                    className="text-neutral-300 hover:text-gold transition-colors duration-300 text-sm sm:text-base"
                   >
                     {link.label}
                   </Link>
@@ -54,11 +54,11 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Contact Us</h3>
-            <div className="space-y-4">
+            <h3 className="text-lg sm:text-xl font-serif mb-3 sm:mb-4 mt-4 sm:mt-0">Contact Us</h3>
+            <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start">
-                <MapPin className="h-5 w-5 text-gold mr-2 mt-1" />
-                <p className="text-neutral-300">
+                <MapPin className="h-5 w-5 text-gold mr-2 mt-0.5" />
+                <p className="text-neutral-300 text-sm sm:text-base">
                   123 Luxury Lane, Fine Dining District, Mumbai, India
                 </p>
               </div>
@@ -66,7 +66,7 @@ const Footer = () => {
                 <Phone className="h-5 w-5 text-gold mr-2" />
                 <a 
                   href="tel:+919876543210" 
-                  className="text-neutral-300 hover:text-gold transition-colors duration-300"
+                  className="text-neutral-300 hover:text-gold transition-colors duration-300 text-sm sm:text-base"
                 >
                   +91 (987) 654-3210
                 </a>
@@ -75,7 +75,7 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-gold mr-2" />
                 <a 
                   href="mailto:info@tajroyale.com" 
-                  className="text-neutral-300 hover:text-gold transition-colors duration-300"
+                  className="text-neutral-300 hover:text-gold transition-colors duration-300 text-sm sm:text-base"
                 >
                   info@tajroyale.com
                 </a>
@@ -85,8 +85,8 @@ const Footer = () => {
           
           {/* Opening Hours */}
           <div>
-            <h3 className="text-xl font-serif mb-4">Opening Hours</h3>
-            <ul className="space-y-2 text-neutral-300">
+            <h3 className="text-lg sm:text-xl font-serif mb-3 sm:mb-4 mt-4 lg:mt-0">Opening Hours</h3>
+            <ul className="space-y-2 text-neutral-300 text-sm sm:text-base">
               <li className="flex justify-between">
                 <span>Monday - Thursday</span>
                 <span>12:00 - 22:00</span>
@@ -103,10 +103,10 @@ const Footer = () => {
           </div>
         </div>
         
-        <hr className="border-neutral-800 my-8" />
+        <hr className="border-neutral-800 my-6 sm:my-8" />
         
         {/* Copyright */}
-        <div className="text-center text-neutral-400">
+        <div className="text-center text-neutral-400 text-sm">
           <p>&copy; {new Date().getFullYear()} Taj Royale. All rights reserved.</p>
         </div>
       </div>
