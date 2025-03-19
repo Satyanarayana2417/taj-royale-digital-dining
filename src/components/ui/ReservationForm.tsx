@@ -253,7 +253,7 @@ const ReservationForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" size="lg">
+        <Button type="submit" size="lg" className="w-full md:w-auto">
           Book Now
         </Button>
       </form>

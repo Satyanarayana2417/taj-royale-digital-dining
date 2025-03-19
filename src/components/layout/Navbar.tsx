@@ -35,7 +35,7 @@ const Navbar = () => {
         scrollPosition > 50 ? 'bg-white shadow-md py-2' : 'py-4 bg-transparent'
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="taj-container flex justify-between items-center">
         {/* Logo */}
         <Link 
           to="/" 
@@ -51,7 +51,7 @@ const Navbar = () => {
         </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-6 lg:space-x-8">
           {[
             { path: '/', label: 'Home' },
             { path: '/about', label: 'About Us' },

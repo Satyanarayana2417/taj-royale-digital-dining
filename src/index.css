@@ -57,14 +57,26 @@
 }
 
 @layer components {
-  /* ... keep existing code (container, section-title classes) */
+  .taj-container {
+    @apply w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-neutral-900 relative inline-block;
+  }
   
   .section-title::after {
     content: '';
     @apply absolute h-[3px] w-20 bg-gold left-0 -bottom-2;
   }
 
-  /* ... keep existing code (section-title.centered, etc) */
+  .section-title.centered {
+    @apply text-center;
+  }
+
+  .section-title.centered::after {
+    @apply left-1/2 -translate-x-1/2;
+  }
 
   .nav-link {
     @apply relative px-2 py-1 text-neutral-800 transition-all duration-300 hover:text-gold;
@@ -86,5 +98,21 @@
     @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light text-transparent bg-clip-text;
   }
 
-  /* ... keep existing code (image-overlay, glass-effect classes) */
+  .image-overlay {
+    @apply relative overflow-hidden;
+  }
+
+  .image-overlay::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .image-overlay:hover::after {
+    @apply opacity-100;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/70 border border-white/20 shadow-lg;
+  }
 }
+
